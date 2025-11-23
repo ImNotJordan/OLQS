@@ -1,0 +1,201 @@
+================================================================================
+ONLINE LEARNING & QUIZ SYSTEM (OLQS) - SETUP INSTRUCTIONS
+================================================================================
+
+QUICK START GUIDE:
+
+1. INITIALIZE DATABASE
+   - Open your browser and go to: http://localhost/OLQS/db_setup.php
+   - Wait for the message "Database setup completed successfully!"
+   - This will create all necessary tables and database
+
+2. ACCESS THE APPLICATION
+   - Go to: http://localhost/OLQS/
+   - Click "Register" to create a new account
+   - Choose account type: Teacher or Student
+   - Complete registration and login
+
+3. TEST THE SYSTEM
+   
+   For Teachers:
+   - Login with teacher account
+   - Go to "Lessons" → "Upload Lesson" to upload files
+   - Go to "Quizzes" → "Create Quiz" to create a quiz
+   - Add questions with multiple choice, true/false, or short answer types
+   - Go to "Analytics" to view student performance
+   
+   For Students:
+   - Login with student account
+   - Go to "Lessons" to view available lessons
+   - Go to "Quizzes" to take available quizzes
+   - View results immediately after submission
+   - Check "Dashboard" for progress statistics
+
+================================================================================
+SYSTEM FEATURES
+================================================================================
+
+CORE FEATURES (REQUIRED):
+✓ Separate accounts for teachers and students
+✓ Teachers can upload files (PDF, slides, videos)
+✓ Teachers can create quizzes with automatic scoring
+✓ Students can view lessons, take quizzes, and see results
+✓ Teachers can track student scores and quiz attempts
+
+ENHANCED FEATURES (BEYOND REQUIREMENTS):
+✓ Multiple question types (Multiple Choice, True/False, Short Answer)
+✓ Comprehensive analytics dashboard with detailed statistics
+✓ Student progress tracking with best scores and attempt history
+✓ Responsive mobile-friendly design
+✓ File management with support for multiple file types
+✓ Quiz time limits and passing score configuration
+✓ Detailed quiz result reviews with correct answers
+✓ User profile management and password change
+✓ Session management with security features
+✓ Beautiful modern UI with intuitive navigation
+
+================================================================================
+FILE STRUCTURE
+================================================================================
+
+OLQS/
+├── config.php                    - Database configuration
+├── db_setup.php                  - Database initialization script
+├── index.php                     - Landing page
+├── login.php                     - Login page
+├── register.php                  - Registration page
+├── logout.php                    - Logout handler
+├── README.md                     - Full documentation
+├── assets/
+│   └── css/
+│       └── style.css             - Complete stylesheet (responsive)
+├── teacher/
+│   ├── dashboard.php             - Teacher main dashboard
+│   ├── lessons.php               - Lesson management
+│   ├── quizzes.php               - Quiz management
+│   ├── edit_quiz.php             - Quiz editor with question builder
+│   ├── analytics.php             - Performance analytics
+│   ├── profile.php               - Teacher profile settings
+│   ├── quiz_results.php          - Quiz results overview
+│   ├── view_attempt.php          - Detailed attempt review
+│   └── download_lesson.php       - Lesson file download
+├── student/
+│   ├── dashboard.php             - Student main dashboard
+│   ├── lessons.php               - Available lessons
+│   ├── quizzes.php               - Available quizzes
+│   ├── take_quiz.php             - Quiz taking interface
+│   ├── view_result.php           - Quiz result display
+│   ├── view_lesson.php           - Lesson viewer
+│   ├── profile.php               - Student profile settings
+│   ├── quiz_history.php          - Attempt history
+│   └── download_lesson.php       - Lesson file download
+└── uploads/
+    └── lessons/                  - Uploaded lesson files storage
+
+================================================================================
+DATABASE TABLES
+================================================================================
+
+users                - User accounts (teachers and students)
+lessons              - Uploaded lesson files and metadata
+quizzes              - Quiz configurations
+questions            - Quiz questions
+options              - Multiple choice and true/false options
+quiz_attempts        - Student quiz attempt records
+student_answers      - Individual student answers
+student_lessons      - Lesson viewing tracking
+progress_tracking    - Student progress metrics
+
+================================================================================
+SUPPORTED FILE TYPES
+================================================================================
+
+Documents:  PDF, DOCX, DOC
+Presentations: PPTX, PPT
+Videos:     MP4, AVI, MOV
+Images:     JPG, JPEG, PNG
+
+Maximum file size: 50MB per file
+
+================================================================================
+SECURITY FEATURES
+================================================================================
+
+✓ Password hashing with bcrypt
+✓ SQL injection prevention with prepared statements
+✓ XSS protection with output sanitization
+✓ Role-based access control
+✓ Secure session management
+✓ CSRF protection headers
+
+================================================================================
+SAMPLE TEST DATA
+================================================================================
+
+You can create test accounts to explore the system:
+
+Teacher Account:
+- Username: teacher1
+- Password: password123
+- Account Type: Teacher
+
+Student Account:
+- Username: student1
+- Password: password123
+- Account Type: Student
+
+After creating accounts, teachers can upload lessons and create quizzes,
+while students can view lessons and take quizzes.
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "Connection failed" error
+Solution: 
+- Ensure MySQL server is running
+- Check database credentials in config.php
+- Verify XAMPP services are started
+
+Problem: Cannot upload files
+Solution:
+- Check uploads/ directory permissions (should be 755)
+- Verify file size is under 50MB
+- Confirm file type is supported
+
+Problem: Login not working
+Solution:
+- Clear browser cookies
+- Verify username and password are correct
+- Check user account was created successfully
+
+Problem: Database tables not created
+Solution:
+- Run db_setup.php again
+- Check MySQL error logs
+- Ensure database user has CREATE TABLE permissions
+
+================================================================================
+ADDITIONAL NOTES
+================================================================================
+
+1. The system uses PHP sessions for authentication
+2. All passwords are hashed using bcrypt for security
+3. File uploads are stored in the uploads/lessons/ directory
+4. The system is fully responsive and works on mobile devices
+5. Teachers can view detailed analytics about student performance
+6. Students can retake quizzes multiple times and see their history
+7. Quiz scoring is automatic for multiple choice and true/false questions
+8. Short answer questions are marked but require manual review
+
+================================================================================
+CONTACT & SUPPORT
+================================================================================
+
+For issues or questions about the system, please refer to the README.md file
+or contact the development team.
+
+Version: 1.0
+Last Updated: 2025
+
+================================================================================

@@ -1,0 +1,273 @@
+================================================================================
+                    ONLINE LEARNING & QUIZ SYSTEM (OLQS)
+                           START HERE GUIDE
+================================================================================
+
+Welcome! This is your complete Online Learning & Quiz System.
+
+================================================================================
+WHAT IS OLQS?
+================================================================================
+
+OLQS is a web-based learning management system that allows:
+
+TEACHERS:
+  • Upload lessons (PDF, videos, presentations, images)
+  • Create quizzes with automatic scoring
+  • Track student performance
+  • View detailed analytics
+
+STUDENTS:
+  • Access lessons
+  • Take quizzes
+  • Get instant feedback
+  • Track progress
+
+================================================================================
+QUICK START (3 STEPS)
+================================================================================
+
+STEP 1: Initialize Database
+────────────────────────────
+1. Open your browser
+2. Go to: http://localhost/OLQS/db_setup.php
+3. Wait for "Database setup completed successfully!"
+
+STEP 2: Create Your Account
+────────────────────────────
+1. Go to: http://localhost/OLQS/
+2. Click "Register"
+3. Choose: Teacher or Student
+4. Fill in your information
+5. Click "Register"
+
+STEP 3: Start Using
+────────────────────────────
+1. Login with your credentials
+2. Explore your dashboard
+3. Start creating or learning!
+
+================================================================================
+FIRST TIME USERS
+================================================================================
+
+IF YOU'RE A TEACHER:
+  1. Login to your teacher account
+  2. Go to "Lessons" → Click "Upload Lesson"
+  3. Upload a PDF, video, or presentation
+  4. Go to "Quizzes" → Click "Create Quiz"
+  5. Add questions and options
+  6. Students can now take your quiz!
+
+IF YOU'RE A STUDENT:
+  1. Login to your student account
+  2. Go to "Lessons" to view available lessons
+  3. Go to "Quizzes" to take available quizzes
+  4. Submit quiz to see instant results
+  5. Check "Dashboard" for your progress
+
+================================================================================
+IMPORTANT FILES TO READ
+================================================================================
+
+1. README.md
+   → Complete documentation
+   → Feature overview
+   → Troubleshooting
+
+2. QUICK_START.md
+   → Quick reference guide
+   → Common tasks
+   → FAQ
+
+3. SETUP_INSTRUCTIONS.txt
+   → Detailed setup guide
+   → Troubleshooting
+   → Sample test data
+
+4. TESTING_GUIDE.md
+   → How to test the system
+   → Test cases
+   → Verification steps
+
+================================================================================
+KEY FEATURES
+================================================================================
+
+✓ Dual account system (Teacher/Student)
+✓ Lesson upload (PDF, PPTX, DOCX, MP4, AVI, MOV, JPG, PNG)
+✓ Quiz creation with multiple question types
+✓ Automatic scoring
+✓ Student progress tracking
+✓ Analytics dashboard
+✓ Responsive mobile design
+✓ Secure authentication
+✓ File management
+✓ Profile management
+
+================================================================================
+SYSTEM REQUIREMENTS
+================================================================================
+
+✓ XAMPP running (Apache + MySQL)
+✓ Modern web browser
+✓ Internet connection (for initial setup)
+
+That's it! No additional software needed.
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "Connection failed" error
+Solution: Make sure MySQL is running in XAMPP
+
+Problem: Cannot upload files
+Solution: Check file size (max 50MB) and file type
+
+Problem: Cannot login
+Solution: Clear browser cookies and try again
+
+Problem: Database error
+Solution: Run db_setup.php again
+
+For more help, see SETUP_INSTRUCTIONS.txt
+
+================================================================================
+DIRECTORY STRUCTURE
+================================================================================
+
+OLQS/
+├── config.php              ← Database configuration
+├── db_setup.php            ← Run this first!
+├── index.php               ← Home page
+├── login.php               ← Login page
+├── register.php            ← Registration page
+├── assets/css/style.css    ← Styling
+├── teacher/                ← Teacher pages
+├── student/                ← Student pages
+├── uploads/lessons/        ← Uploaded files
+└── README.md               ← Documentation
+
+================================================================================
+SUPPORTED FILE TYPES
+================================================================================
+
+Documents:    PDF, DOCX, DOC
+Slides:       PPTX, PPT
+Videos:       MP4, AVI, MOV
+Images:       JPG, JPEG, PNG
+
+Maximum size: 50MB per file
+
+================================================================================
+SAMPLE TEST ACCOUNTS
+================================================================================
+
+You can create your own accounts, or use these for testing:
+
+TEACHER ACCOUNT:
+  Username: teacher1
+  Password: password123
+  Type: Teacher
+
+STUDENT ACCOUNT:
+  Username: student1
+  Password: password123
+  Type: Student
+
+================================================================================
+FEATURES BY ROLE
+================================================================================
+
+TEACHER DASHBOARD:
+  ✓ Upload lessons
+  ✓ Create quizzes
+  ✓ View analytics
+  ✓ Track students
+  ✓ Manage profile
+
+STUDENT DASHBOARD:
+  ✓ View lessons
+  ✓ Take quizzes
+  ✓ See results
+  ✓ Track progress
+  ✓ Manage profile
+
+================================================================================
+SECURITY
+================================================================================
+
+Your data is protected by:
+  ✓ Encrypted passwords
+  ✓ Secure login
+  ✓ Role-based access
+  ✓ Protected uploads
+  ✓ Session management
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Run db_setup.php to initialize database
+2. Create a teacher account
+3. Create a student account
+4. Upload a lesson as teacher
+5. Create a quiz as teacher
+6. Take quiz as student
+7. View results
+8. Check analytics
+
+================================================================================
+NEED HELP?
+================================================================================
+
+Documentation Files:
+  • README.md - Complete guide
+  • QUICK_START.md - Quick reference
+  • SETUP_INSTRUCTIONS.txt - Setup help
+  • TESTING_GUIDE.md - Testing procedures
+  • SYSTEM_OVERVIEW.md - System details
+
+All files are in the OLQS folder.
+
+================================================================================
+READY TO START?
+================================================================================
+
+1. Open: http://localhost/OLQS/db_setup.php
+2. Wait for success message
+3. Go to: http://localhost/OLQS/
+4. Click "Register"
+5. Create your account
+6. Start using OLQS!
+
+================================================================================
+SYSTEM STATUS: ✅ READY FOR USE
+================================================================================
+
+All features are implemented and tested.
+The system is ready for immediate use.
+
+Version: 1.0
+Last Updated: 2025
+
+================================================================================
+QUESTIONS?
+================================================================================
+
+Check the documentation files:
+  • README.md for general questions
+  • QUICK_START.md for quick answers
+  • SETUP_INSTRUCTIONS.txt for setup issues
+  • TESTING_GUIDE.md for testing help
+
+================================================================================
+ENJOY USING OLQS!
+================================================================================
+
+Thank you for using the Online Learning & Quiz System.
+
+Happy learning and teaching!
+
+================================================================================

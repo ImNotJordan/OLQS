@@ -1,0 +1,364 @@
+================================================================================
+ONLINE LEARNING & QUIZ SYSTEM (OLQS)
+SYSTEM ARCHITECTURE
+================================================================================
+
+================================================================================
+SYSTEM ARCHITECTURE DIAGRAM
+================================================================================
+
+                          ┌─────────────────────────────────┐
+                          │      Web Browser / Client       │
+                          │  (HTML5, CSS3, JavaScript)     │
+                          └──────────────┬──────────────────┘
+                                         │
+                                    HTTP/HTTPS
+                                         │
+                    ┌────────────────────┴────────────────────┐
+                    │                                         │
+            ┌───────▼────────┐                      ┌────────▼──────┐
+            │   Apache Web   │                      │   XAMPP       │
+            │    Server      │                      │   Environment │
+            └───────┬────────┘                      └───────────────┘
+                    │
+        ┌───────────┴───────────┐
+        │                       │
+    ┌───▼────────┐      ┌──────▼──────┐
+    │   PHP 7.4+ │      │   MySQL 5.7+│
+    │  Backend   │      │  Database   │
+    └───┬────────┘      └──────┬──────┘
+        │                      │
+        │                      │
+    ┌───▼──────────────────────▼────┐
+    │   Application Logic Layer      │
+    │  (config.php, handlers)        │
+    └───┬──────────────────────┬─────┘
+        │                      │
+    ┌───▼────────┐      ┌─────▼──────┐
+    │  Teacher   │      │  Student   │
+    │  Module    │      │  Module    │
+    └────────────┘      └────────────┘
+
+================================================================================
+USER FLOW DIAGRAM
+================================================================================
+
+                              ┌─────────────┐
+                              │   OLQS      │
+                              │   Home      │
+                              └──────┬──────┘
+                                     │
+                    ┌────────────────┼────────────────┐
+                    │                │                │
+              ┌─────▼────┐      ┌────▼────┐      ┌───▼──────┐
+              │  Login    │      │Register │      │  Logout  │
+              └─────┬────┘      └────┬────┘      └──────────┘
+                    │                │
+         ┌──────────┴────────────────┴──────────┐
+         │                                      │
+    ┌────▼──────────┐                  ┌───────▼────────┐
+    │  TEACHER      │                  │  STUDENT       │
+    │  Dashboard    │                  │  Dashboard     │
+    └────┬──────────┘                  └───────┬────────┘
+         │                                     │
+    ┌────┴────────────────────┐          ┌────┴────────────────┐
+    │                         │          │                    │
+┌───▼────┐  ┌──────┐  ┌──────▼──┐  ┌───▼────┐  ┌───────┐  ┌──▼────┐
+│Lessons │  │Quizzes│  │Analytics│  │Lessons │  │Quizzes│  │Profile│
+└────────┘  └──┬───┘  └─────────┘  └────────┘  └───┬───┘  └───────┘
+               │                                    │
+          ┌────▼────┐                          ┌────▼────┐
+          │ Create  │                          │ Take    │
+          │ Quiz    │                          │ Quiz    │
+          └────┬────┘                          └────┬────┘
+               │                                    │
+          ┌────▼────┐                          ┌────▼────┐
+          │ Add     │                          │ Submit  │
+          │Questions│                          │ Quiz    │
+          └─────────┘                          └────┬────┘
+                                                    │
+                                               ┌────▼────┐
+                                               │ View    │
+                                               │ Results │
+                                               └─────────┘
+
+================================================================================
+DATABASE SCHEMA DIAGRAM
+================================================================================
+
+┌──────────────┐
+│    USERS     │
+├──────────────┤
+│ id (PK)      │
+│ username     │
+│ email        │
+│ password     │
+│ user_type    │
+│ full_name    │
+└──────┬───────┘
+       │
+       ├─────────────────────┬──────────────────────┐
+       │                     │                      │
+   ┌───▼──────────┐  ┌──────▼────────┐  ┌─────────▼──────┐
+   │   LESSONS    │  │    QUIZZES    │  │ PROGRESS_      │
+   ├──────────────┤  ├───────────────┤  │ TRACKING       │
+   │ id (PK)      │  │ id (PK)       │  ├────────────────┤
+   │ teacher_id   │  │ teacher_id    │  │ id (PK)        │
+   │ title        │  │ title         │  │ student_id     │
+   │ description  │  │ description   │  │ quiz_id        │
+   │ file_path    │  │ total_q       │  │ quiz_attempts  │
+   │ file_type    │  │ passing_score │  │ best_score     │
+   │ file_size    │  │ time_limit    │  │ last_attempt   │
+   └──────────────┘  └───────┬───────┘  └────────────────┘
+                             │
+                        ┌────▼──────────┐
+                        │  QUESTIONS    │
+                        ├───────────────┤
+                        │ id (PK)       │
+                        │ quiz_id (FK)  │
+                        │ question_text │
+                        │ question_type │
+                        │ points        │
+                        └────┬──────────┘
+                             │
+                        ┌────▼──────────┐
+                        │   OPTIONS     │
+                        ├───────────────┤
+                        │ id (PK)       │
+                        │ question_id   │
+                        │ option_text   │
+                        │ is_correct    │
+                        └───────────────┘
+
+                    ┌──────────────────────┐
+                    │  QUIZ_ATTEMPTS       │
+                    ├──────────────────────┤
+                    │ id (PK)              │
+                    │ quiz_id (FK)         │
+                    │ student_id (FK)      │
+                    │ score                │
+                    │ total_points         │
+                    │ percentage           │
+                    │ passed               │
+                    │ started_at           │
+                    │ completed_at         │
+                    └──────┬───────────────┘
+                           │
+                    ┌──────▼──────────────┐
+                    │ STUDENT_ANSWERS     │
+                    ├─────────────────────┤
+                    │ id (PK)             │
+                    │ attempt_id (FK)     │
+                    │ question_id (FK)    │
+                    │ student_answer      │
+                    │ is_correct          │
+                    │ points_earned       │
+                    └─────────────────────┘
+
+================================================================================
+MODULE STRUCTURE
+================================================================================
+
+CORE SYSTEM
+├── config.php (Configuration & Helpers)
+├── db_setup.php (Database Initialization)
+├── index.php (Landing Page)
+├── login.php (Authentication)
+├── register.php (Registration)
+└── logout.php (Session Termination)
+
+TEACHER MODULE
+├── dashboard.php (Main Dashboard)
+├── lessons.php (Lesson Management)
+├── quizzes.php (Quiz Management)
+├── edit_quiz.php (Quiz Editor)
+├── analytics.php (Analytics Dashboard)
+├── profile.php (Profile Management)
+├── quiz_results.php (Results Overview)
+├── view_attempt.php (Attempt Review)
+└── download_lesson.php (File Download)
+
+STUDENT MODULE
+├── dashboard.php (Main Dashboard)
+├── lessons.php (Lesson Listing)
+├── quizzes.php (Quiz Listing)
+├── take_quiz.php (Quiz Interface)
+├── view_result.php (Result Display)
+├── view_lesson.php (Lesson Viewer)
+├── profile.php (Profile Management)
+├── quiz_history.php (Attempt History)
+└── download_lesson.php (File Download)
+
+STYLING
+└── assets/css/style.css (Complete Stylesheet)
+
+================================================================================
+DATA FLOW DIAGRAM
+================================================================================
+
+LESSON UPLOAD FLOW:
+Teacher → Upload Form → Validation → File Storage → Database Entry → Student Access
+
+QUIZ CREATION FLOW:
+Teacher → Create Quiz → Add Questions → Add Options → Mark Answers → Student Access
+
+QUIZ TAKING FLOW:
+Student → View Quiz → Answer Questions → Submit → Scoring → Results Display
+
+ANALYTICS FLOW:
+Database → Query Aggregation → Statistics Calculation → Dashboard Display
+
+================================================================================
+SECURITY ARCHITECTURE
+================================================================================
+
+INPUT LAYER:
+├── Input Validation
+├── Type Checking
+└── Sanitization
+
+AUTHENTICATION LAYER:
+├── Login/Register
+├── Password Hashing (Bcrypt)
+├── Session Management
+└── Role-Based Access
+
+DATABASE LAYER:
+├── Prepared Statements
+├── SQL Injection Prevention
+├── Foreign Key Constraints
+└── Data Integrity
+
+OUTPUT LAYER:
+├── XSS Protection
+├── Output Sanitization
+├── HTML Encoding
+└── Safe Display
+
+================================================================================
+DEPLOYMENT ARCHITECTURE
+================================================================================
+
+                    ┌──────────────────────┐
+                    │   Web Browser        │
+                    └──────────┬───────────┘
+                               │
+                    ┌──────────▼───────────┐
+                    │   Internet/Network   │
+                    └──────────┬───────────┘
+                               │
+                    ┌──────────▼───────────┐
+                    │  Apache Web Server   │
+                    │  (Port 80/443)       │
+                    └──────────┬───────────┘
+                               │
+                    ┌──────────▼───────────┐
+                    │   PHP Processor      │
+                    │  (7.4+)              │
+                    └──────────┬───────────┘
+                               │
+                    ┌──────────▼───────────┐
+                    │   MySQL Database     │
+                    │  (5.7+)              │
+                    └──────────────────────┘
+
+================================================================================
+REQUEST/RESPONSE CYCLE
+================================================================================
+
+1. USER REQUEST
+   Browser → HTTP Request → Web Server
+
+2. ROUTING
+   Web Server → Route to PHP File
+
+3. AUTHENTICATION
+   Check Session → Verify User Role
+
+4. PROCESSING
+   Execute Business Logic → Query Database
+
+5. RESPONSE
+   Generate HTML/JSON → Send to Browser
+
+6. RENDERING
+   Browser → Parse HTML/CSS/JS → Display
+
+================================================================================
+SCALABILITY CONSIDERATIONS
+================================================================================
+
+Database:
+✓ Proper indexing on foreign keys
+✓ Normalized schema
+✓ Efficient queries
+✓ Connection pooling ready
+
+Application:
+✓ Stateless design
+✓ Session-based state
+✓ Modular code structure
+✓ Reusable functions
+
+Frontend:
+✓ Responsive design
+✓ Minimal dependencies
+✓ Optimized CSS
+✓ Vanilla JavaScript
+
+================================================================================
+PERFORMANCE OPTIMIZATION
+================================================================================
+
+Database:
+- Indexed queries
+- Optimized joins
+- Prepared statements
+- Connection efficiency
+
+Application:
+- Minimal processing
+- Efficient algorithms
+- Proper error handling
+- Resource cleanup
+
+Frontend:
+- Single CSS file
+- Vanilla JavaScript
+- No external libraries
+- Responsive design
+
+================================================================================
+SYSTEM COMPONENTS INTERACTION
+================================================================================
+
+┌─────────────────────────────────────────────────────────┐
+│                   CLIENT LAYER                          │
+│  (Browser - HTML, CSS, JavaScript)                      │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                    HTTP/HTTPS
+                       │
+┌──────────────────────▼──────────────────────────────────┐
+│                   SERVER LAYER                          │
+│  (Apache - PHP Request Handler)                         │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+┌──────────────────────▼──────────────────────────────────┐
+│              APPLICATION LAYER                          │
+│  (PHP - Business Logic, Validation, Processing)         │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+┌──────────────────────▼──────────────────────────────────┐
+│              DATA ACCESS LAYER                          │
+│  (Database Queries, Prepared Statements)                │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+┌──────────────────────▼──────────────────────────────────┐
+│              DATABASE LAYER                             │
+│  (MySQL - Data Storage and Retrieval)                   │
+└─────────────────────────────────────────────────────────┘
+
+================================================================================
+END OF ARCHITECTURE DOCUMENTATION
+================================================================================
