@@ -122,12 +122,12 @@ $questions = $conn->query("SELECT * FROM questions WHERE quiz_id = $quiz_id ORDE
         <aside class="sidebar">
             <div class="sidebar-logo">OLQS</div>
             <ul class="sidebar-menu">
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="lessons.php">Lessons</a></li>
-                <li><a href="quizzes.php" class="active">Quizzes</a></li>
-                <li><a href="analytics.php">Analytics</a></li>
-                <li><a href="profile.php">Profile</a></li>
-                <li><a href="../logout.php">Logout</a></li>
+                <li><a href="dashboard.php"><span class="icon">📊</span>Dashboard</a></li>
+                <li><a href="lessons.php"><span class="icon">📚</span>Lessons</a></li>
+                <li><a href="quizzes.php" class="active"><span class="icon">📝</span>Quizzes</a></li>
+                <li><a href="analytics.php"><span class="icon">📈</span>Analytics</a></li>
+                <li><a href="profile.php"><span class="icon">👤</span>Profile</a></li>
+                <li><a href="../logout.php"><span class="icon">🚪</span>Logout</a></li>
             </ul>
         </aside>
 
