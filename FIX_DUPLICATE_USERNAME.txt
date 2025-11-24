@@ -1,0 +1,140 @@
+================================================================================
+FIX: Duplicate Username Error
+================================================================================
+
+PROBLEM:
+Fatal error: Uncaught mysqli_sql_exception: Duplicate entry 'Jordan' 
+for key 'username' in C:\xampp\htdocs\OLQS\create_admin.php:40
+
+CAUSE:
+The username you tried to use (e.g., "Jordan") already exists in the database.
+Usernames must be unique in the system.
+
+================================================================================
+SOLUTION: USE A DIFFERENT USERNAME
+================================================================================
+
+The username "Jordan" is already taken by another user account.
+
+CHOOSE A DIFFERENT USERNAME:
+Examples:
+✓ admin
+✓ administrator
+✓ admin_user
+✓ system_admin
+✓ superadmin
+✓ root_admin
+✓ manager
+✓ admin2025
+
+STEPS TO FIX:
+1. Go to: http://localhost/OLQS/create_admin.php
+2. Fill in the form with:
+   - Full Name: Your Name
+   - Username: (use a DIFFERENT username, not "Jordan")
+   - Email: admin@example.com
+   - Password: (min 6 characters)
+   - Confirm Password: (repeat)
+3. Click "Create Admin Account"
+4. Success! ✓
+
+================================================================================
+ALTERNATIVE: CHECK EXISTING USERNAMES
+================================================================================
+
+To see what usernames are already taken:
+
+1. Open phpMyAdmin: http://localhost/phpmyadmin
+2. Click on database: olqs_db
+3. Click on table: users
+4. Look at the "username" column
+5. See which usernames are already used
+6. Choose a different username for admin
+
+================================================================================
+COMMON USERNAMES TO AVOID
+================================================================================
+
+These are likely already taken:
+✗ Jordan (the one causing the error)
+✗ teacher1
+✗ student1
+✗ user1
+✗ test
+✗ demo
+
+USE THESE INSTEAD:
+✓ admin
+✓ administrator
+✓ admin_user
+✓ system_admin
+✓ superadmin
+✓ root_admin
+✓ manager
+✓ admin2025
+✓ olqs_admin
+
+================================================================================
+QUICK FIX STEPS
+================================================================================
+
+1. Go to: http://localhost/OLQS/create_admin.php
+2. Clear the username field
+3. Type a NEW username (not "Jordan")
+4. Fill in other fields
+5. Click "Create Admin Account"
+6. Done! ✓
+
+================================================================================
+IF ADMIN ACCOUNT ALREADY EXISTS
+================================================================================
+
+If you see: "An admin account has already been created"
+
+This means an admin account was successfully created before.
+You can login at: http://localhost/OLQS/admin_login.php
+
+Use the username and password you created for the admin account.
+
+================================================================================
+VERIFY ADMIN ACCOUNT CREATION
+================================================================================
+
+After successfully creating admin account:
+
+1. Go to: http://localhost/OLQS/admin_login.php
+2. Enter your admin username
+3. Enter your admin password
+4. Click "Login as Admin"
+5. You should see the admin dashboard
+
+If login fails, try:
+- Clear browser cookies
+- Check that username and password are correct
+- Try again
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. ✓ Choose a different username
+2. ✓ Go to: http://localhost/OLQS/create_admin.php
+3. ✓ Create admin account with new username
+4. ✓ Go to: http://localhost/OLQS/admin_login.php
+5. ✓ Login with admin credentials
+6. ✓ Access admin dashboard
+
+================================================================================
+NEED HELP?
+================================================================================
+
+Check these files:
+- ADMIN_SETUP.md - Complete admin setup guide
+- ADMIN_QUICK_START.txt - Quick reference
+- FIX_DATABASE_ERROR.txt - Database error fixes
+
+================================================================================
+STATUS: EASILY FIXABLE ✓
+================================================================================
+
+Just use a different username and you're done!

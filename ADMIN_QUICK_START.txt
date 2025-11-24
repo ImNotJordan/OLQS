@@ -1,0 +1,279 @@
+================================================================================
+OLQS ADMIN SYSTEM - QUICK START GUIDE
+================================================================================
+
+⚡ GET STARTED IN 3 STEPS
+
+================================================================================
+STEP 1: INITIALIZE DATABASE
+================================================================================
+
+1. Open your browser
+2. Go to: http://localhost/OLQS/db_setup.php
+3. Wait for "Database setup completed successfully!"
+4. Done! ✓
+
+================================================================================
+STEP 2: CREATE ADMIN ACCOUNT
+================================================================================
+
+1. Go to: http://localhost/OLQS/create_admin.php
+2. Fill in:
+   - Full Name: Your Name
+   - Username: admin
+   - Email: admin@example.com
+   - Password: (min 6 characters)
+   - Confirm Password: (repeat)
+3. Click "Create Admin Account"
+4. Done! ✓
+
+================================================================================
+STEP 3: LOGIN TO ADMIN DASHBOARD
+================================================================================
+
+1. Go to: http://localhost/OLQS/admin_login.php
+2. Enter:
+   - Username: admin
+   - Password: (your password)
+3. Click "Login as Admin"
+4. You're now in the admin dashboard! ✓
+
+================================================================================
+ADMIN DASHBOARD OVERVIEW
+================================================================================
+
+📊 DASHBOARD
+   → View system statistics
+   → See pending verifications
+   → Quick action buttons
+
+👥 USERS
+   → View all registered users
+   → Check verification status
+
+✅ VERIFICATIONS
+   → Approve pending accounts
+   → Reject invalid accounts
+   → View verified users
+
+📈 REPORTS
+   → System statistics
+   → Lesson/Quiz counts
+   → Average scores
+
+⚙️ SETTINGS
+   → Update profile
+   → Change password
+
+================================================================================
+APPROVING USER ACCOUNTS
+================================================================================
+
+1. Login to admin dashboard
+2. Click on "Verifications" in sidebar
+3. Find pending user in table
+4. Click "✓ Approve" button
+5. User can now login!
+
+OR from Dashboard:
+1. See pending verifications on main page
+2. Click "Approve" button directly
+3. User account approved ✓
+
+================================================================================
+REJECTING USER ACCOUNTS
+================================================================================
+
+1. Go to Verifications page
+2. Find user to reject
+3. Click "✗ Reject" button
+4. Account deleted from system
+5. User can re-register if needed
+
+================================================================================
+USER REGISTRATION FLOW
+================================================================================
+
+USER SIDE:
+1. Go to http://localhost/OLQS/register.php
+2. Fill in registration form
+3. Select account type (Teacher/Student)
+4. Click "Register"
+5. See message: "Account pending admin verification"
+
+ADMIN SIDE:
+1. Login to admin dashboard
+2. See new user in pending verifications
+3. Review user information
+4. Approve or Reject
+5. User notified of decision
+
+USER LOGIN:
+1. If approved: Can login at http://localhost/OLQS/login.php
+2. If rejected: Must re-register
+
+================================================================================
+QUICK LINKS
+================================================================================
+
+ADMIN PAGES:
+- Admin Dashboard: http://localhost/OLQS/admin/dashboard.php
+- Admin Login: http://localhost/OLQS/admin_login.php
+- Create Admin: http://localhost/OLQS/create_admin.php
+
+USER PAGES:
+- User Login: http://localhost/OLQS/login.php
+- Register: http://localhost/OLQS/register.php
+- Home: http://localhost/OLQS/
+
+================================================================================
+ADMIN SIDEBAR MENU
+================================================================================
+
+📊 Dashboard
+   Main dashboard with statistics and pending verifications
+
+👥 Users
+   Manage all registered users
+
+✅ Verifications
+   Approve/reject pending accounts
+
+📈 Reports
+   View system reports and analytics
+
+⚙️ Settings
+   Admin profile and password management
+
+🚪 Logout
+   End admin session
+
+================================================================================
+COMMON TASKS
+================================================================================
+
+TASK: Approve a new teacher account
+→ Go to Verifications
+→ Find teacher in pending list
+→ Click "✓ Approve"
+→ Teacher can now login
+
+TASK: Reject a spam account
+→ Go to Verifications
+→ Find suspicious account
+→ Click "✗ Reject"
+→ Account deleted
+
+TASK: View all users
+→ Go to Users page
+→ See all registered users
+→ Check verification status
+
+TASK: View system statistics
+→ Go to Reports page
+→ See lesson/quiz counts
+→ View average scores
+
+TASK: Change admin password
+→ Go to Settings
+→ Click "Change Password"
+→ Enter current and new password
+→ Click "Change Password"
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Q: Cannot access admin dashboard
+A: Make sure you're logged in as admin
+   Check that admin account was created successfully
+
+Q: User cannot login after approval
+A: Verify account is marked as verified
+   Try clearing browser cookies
+   Check that user is using correct credentials
+
+Q: Cannot create admin account
+A: Run db_setup.php first
+   Check that no admin account already exists
+
+Q: Pending verifications not showing
+A: Refresh the page
+   Check database connection
+   Verify users are actually pending
+
+================================================================================
+ADMIN ACCOUNT CREDENTIALS
+================================================================================
+
+After running create_admin.php:
+
+Username: (as you entered)
+Password: (as you entered)
+
+KEEP THESE SECURE!
+
+Login at: http://localhost/OLQS/admin_login.php
+
+================================================================================
+WHAT'S NEW IN ADMIN SYSTEM
+================================================================================
+
+✓ Admin role with full system access
+✓ Account verification system
+✓ Admin dashboard with statistics
+✓ User management interface
+✓ Pending verification management
+✓ System reports and analytics
+✓ Admin profile management
+✓ Secure admin login
+
+================================================================================
+SYSTEM FEATURES
+================================================================================
+
+BEFORE:
+- Users register and immediately login
+- No account verification
+- No admin oversight
+
+AFTER:
+✓ Users register and wait for approval
+✓ Admin reviews all registrations
+✓ Admin can approve/reject accounts
+✓ Admin dashboard for management
+✓ System statistics and reports
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. ✓ Run db_setup.php
+2. ✓ Run create_admin.php
+3. ✓ Login to admin dashboard
+4. ✓ Test user registration
+5. ✓ Approve test accounts
+6. ✓ Test user login
+7. ✓ Explore admin features
+
+================================================================================
+NEED HELP?
+================================================================================
+
+For detailed information, see:
+- ADMIN_SETUP.md - Complete setup guide
+- ADMIN_SYSTEM_SUMMARY.txt - Full system overview
+- README.md - General system documentation
+
+================================================================================
+READY TO GO! 🚀
+================================================================================
+
+Your OLQS admin system is now ready to use!
+
+1. Setup database: db_setup.php
+2. Create admin: create_admin.php
+3. Login: admin_login.php
+4. Manage users: admin/dashboard.php
+
+Questions? Check the documentation files!

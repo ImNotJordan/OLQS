@@ -57,17 +57,23 @@ function is_student() {
     return isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'student';
 }
 
+function is_admin() {
+    return isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin';
+}
+
 // Redirect to login if not authenticated
 function require_login() {
     if (!is_logged_in()) {
-        header('Location: login.php');
+        header('Location: ../login.php');
         exit();
     }
 }
 
 // Redirect based on user type
 function redirect_by_role() {
-    if (is_teacher()) {
+    if (is_admin()) {
+        header('Location: admin/dashboard.php');
+    } elseif (is_teacher()) {
         header('Location: teacher/dashboard.php');
     } elseif (is_student()) {
         header('Location: student/dashboard.php');

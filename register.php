@@ -35,12 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Hash password and insert user
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-            $stmt = $conn->prepare("INSERT INTO users (username, email, password, user_type, full_name) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $username, $email, $hashed_password, $user_type, $full_name);
+            $verification_token = bin2hex(random_bytes(16));
+            $stmt = $conn->prepare("INSERT INTO users (username, email, password, user_type, full_name, is_verified, verification_token) VALUES (?, ?, ?, ?, ?, FALSE, ?)");
+            $stmt->bind_param("ssssss", $username, $email, $hashed_password, $user_type, $full_name, $verification_token);
 
             if ($stmt->execute()) {
-                $success = 'Registration successful! Redirecting to login...';
-                header('refresh:2;url=login.php');
+                $success = 'Registration successful! Your account is pending admin verification. You will be able to login once approved.';
+                header('refresh:3;url=login.php');
             } else {
                 $error = 'Error registering user. Please try again.';
             }

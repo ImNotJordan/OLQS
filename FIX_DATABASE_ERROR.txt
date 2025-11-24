@@ -1,0 +1,147 @@
+================================================================================
+FIX: Unknown column 'is_verified' Error
+================================================================================
+
+PROBLEM:
+Fatal error: Uncaught mysqli_sql_exception: Unknown column 'is_verified' 
+in 'field list' in C:\xampp\htdocs\OLQS\admin_login.php:13
+
+CAUSE:
+The database hasn't been updated with the new verification fields needed 
+for the admin system.
+
+================================================================================
+SOLUTION: RUN DATABASE MIGRATION
+================================================================================
+
+STEP 1: Open Migration Script
+→ Go to: http://localhost/OLQS/migrate_db.php
+
+STEP 2: Wait for Migration to Complete
+→ The script will automatically:
+   ✓ Add is_verified column
+   ✓ Add verification_token column
+   ✓ Add verified_at column
+   ✓ Update user_type to include admin role
+
+STEP 3: See Success Message
+→ You should see: "✓ Migration Complete!"
+→ Database is now ready
+
+STEP 4: Create Admin Account
+→ Go to: http://localhost/OLQS/create_admin.php
+→ Fill in admin details
+→ Create account
+
+STEP 5: Login to Admin Dashboard
+→ Go to: http://localhost/OLQS/admin_login.php
+→ Use your admin credentials
+→ Access dashboard
+
+================================================================================
+ALTERNATIVE: Manual Database Update
+================================================================================
+
+If the migration script doesn't work, you can manually update the database:
+
+1. Open phpMyAdmin (http://localhost/phpmyadmin)
+2. Select database: olqs_db
+3. Select table: users
+4. Run these SQL queries:
+
+   ALTER TABLE users ADD COLUMN is_verified BOOLEAN DEFAULT FALSE;
+   ALTER TABLE users ADD COLUMN verification_token VARCHAR(255);
+   ALTER TABLE users ADD COLUMN verified_at TIMESTAMP NULL;
+   ALTER TABLE users MODIFY user_type ENUM('teacher', 'student', 'admin');
+
+5. Click Execute
+6. Done! Database is updated
+
+================================================================================
+QUICK FIX CHECKLIST
+================================================================================
+
+□ Open: http://localhost/OLQS/migrate_db.php
+□ Wait for migration to complete
+□ See "✓ Migration Complete!" message
+□ Go to: http://localhost/OLQS/create_admin.php
+□ Create admin account
+□ Go to: http://localhost/OLQS/admin_login.php
+□ Login with admin credentials
+□ Access admin dashboard
+
+================================================================================
+IF MIGRATION STILL FAILS
+================================================================================
+
+1. Check MySQL is running
+   - Open XAMPP Control Panel
+   - Verify MySQL is started (green indicator)
+
+2. Check database connection
+   - Open: http://localhost/OLQS/
+   - If page loads, connection is OK
+
+3. Check database exists
+   - Open phpMyAdmin
+   - Look for "olqs_db" in left sidebar
+   - If not there, run: http://localhost/OLQS/db_setup.php
+
+4. Check users table exists
+   - In phpMyAdmin, click on olqs_db
+   - Look for "users" table
+   - If not there, run: http://localhost/OLQS/db_setup.php
+
+5. Try manual update (see above)
+
+================================================================================
+VERIFICATION AFTER FIX
+================================================================================
+
+After running migration, verify the database was updated:
+
+1. Open phpMyAdmin
+2. Go to olqs_db → users table
+3. Click "Structure" tab
+4. Look for these columns:
+   ✓ is_verified
+   ✓ verification_token
+   ✓ verified_at
+   ✓ user_type (should show ENUM with admin option)
+
+If all columns are present, migration was successful!
+
+================================================================================
+NEXT STEPS AFTER FIX
+================================================================================
+
+1. ✓ Run migration: http://localhost/OLQS/migrate_db.php
+2. ✓ Create admin: http://localhost/OLQS/create_admin.php
+3. ✓ Login: http://localhost/OLQS/admin_login.php
+4. ✓ Manage users: Admin Dashboard
+5. ✓ Test user registration and approval
+
+================================================================================
+IMPORTANT NOTES
+================================================================================
+
+• Migration is safe - it only adds new columns
+• Existing data is preserved
+• Can be run multiple times (won't duplicate columns)
+• Required for admin system to work
+
+================================================================================
+NEED MORE HELP?
+================================================================================
+
+Check these files for more information:
+- ADMIN_SETUP.md - Complete admin setup guide
+- ADMIN_QUICK_START.txt - Quick reference
+- ADMIN_SYSTEM_SUMMARY.txt - System overview
+
+================================================================================
+STATUS: FIXABLE ✓
+================================================================================
+
+This error is easily fixable by running the migration script.
+Follow the steps above and you'll be up and running!
